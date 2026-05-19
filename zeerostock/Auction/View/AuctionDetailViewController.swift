@@ -196,7 +196,7 @@ final class AuctionDetailViewController: UIViewController {
         title = "Auction"
         view.backgroundColor = UIColor.systemGray6
         navigationController?.navigationBar.tintColor = .systemIndigo
-
+        view.layoutIfNeeded()
         let cardView = UIView()
         cardView.backgroundColor = .white
         cardView.layer.cornerRadius = 28
@@ -208,8 +208,10 @@ final class AuctionDetailViewController: UIViewController {
 
         view.addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.alwaysBounceVertical = true
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.backgroundColor = .clear
         scrollView.addSubview(contentView)
         contentView.addSubview(cardView)
 
@@ -232,7 +234,7 @@ final class AuctionDetailViewController: UIViewController {
             cardView.addSubview(approveButton)
             cardView.addSubview(rejectButton)
         }
-        cardView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor, constant: -40).isActive = true
+        cardView.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -40).isActive = true
 
         approveButton.addTarget(self, action: #selector(approveTapped), for: .touchUpInside)
         rejectButton.addTarget(self, action: #selector(rejectTapped), for: .touchUpInside)
@@ -333,7 +335,7 @@ final class AuctionDetailViewController: UIViewController {
         } else {
 
             NSLayoutConstraint.activate([
-                bidStatusLabel.bottomAnchor.constraint( equalTo: cardView.bottomAnchor,constant: -24)
+                bidStatusLabel.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -24)
             ])
         }
     }
