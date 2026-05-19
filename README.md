@@ -263,6 +263,26 @@ File → Packages → Update to Latest Package Versions
 
 ---
 
+# Creating Roles
+
+By default, every newly registered account is created as:
+
+```text
+user
+```
+
+or
+
+```text
+supplier
+```
+
+depending on signup selection.
+
+Admin roles are managed manually through Firebase Firestore. Change the role to super_admin, product_admin, auction_admin according to your requirement. 
+
+---
+
 # MVVM Structure
 
 ## View
