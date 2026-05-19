@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A965A43A2FBCC7C300CD384C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A965A4392FBCC7C300CD384C /* .gitignore */; };
 		A9863D5D2FB87CD5009511A6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A9863D5C2FB87CD5009511A6 /* FirebaseAuth */; };
 		A9863D5F2FB87CD5009511A6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A9863D5E2FB87CD5009511A6 /* FirebaseFirestore */; };
 		A9863D612FB87CD5009511A6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A9863D602FB87CD5009511A6 /* FirebaseStorage */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A965A4392FBCC7C300CD384C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A9863D432FB87B3A009511A6 /* zeerostock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zeerostock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -58,6 +60,7 @@
 		A9863D3A2FB87B3A009511A6 = {
 			isa = PBXGroup;
 			children = (
+				A965A4392FBCC7C300CD384C /* .gitignore */,
 				A9863D452FB87B3A009511A6 /* zeerostock */,
 				A9863D442FB87B3A009511A6 /* Products */,
 			);
@@ -144,6 +147,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A965A43A2FBCC7C300CD384C /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
