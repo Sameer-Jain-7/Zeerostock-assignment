@@ -6,6 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A9863D5D2FB87CD5009511A6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A9863D5C2FB87CD5009511A6 /* FirebaseAuth */; };
+		A9863D5F2FB87CD5009511A6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A9863D5E2FB87CD5009511A6 /* FirebaseFirestore */; };
+		A9863D612FB87CD5009511A6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A9863D602FB87CD5009511A6 /* FirebaseStorage */; };
+		A9924BAC2FB8F866003D3CFF /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = A9924BAB2FB8F866003D3CFF /* SDWebImage */; };
+		A9924BAE2FB8F866003D3CFF /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A9924BAD2FB8F866003D3CFF /* SDWebImageMapKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		A9863D432FB87B3A009511A6 /* zeerostock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zeerostock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +44,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9863D5D2FB87CD5009511A6 /* FirebaseAuth in Frameworks */,
+				A9924BAE2FB8F866003D3CFF /* SDWebImageMapKit in Frameworks */,
+				A9863D5F2FB87CD5009511A6 /* FirebaseFirestore in Frameworks */,
+				A9924BAC2FB8F866003D3CFF /* SDWebImage in Frameworks */,
+				A9863D612FB87CD5009511A6 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +91,11 @@
 			);
 			name = zeerostock;
 			packageProductDependencies = (
+				A9863D5C2FB87CD5009511A6 /* FirebaseAuth */,
+				A9863D5E2FB87CD5009511A6 /* FirebaseFirestore */,
+				A9863D602FB87CD5009511A6 /* FirebaseStorage */,
+				A9924BAB2FB8F866003D3CFF /* SDWebImage */,
+				A9924BAD2FB8F866003D3CFF /* SDWebImageMapKit */,
 			);
 			productName = zeerostock;
 			productReference = A9863D432FB87B3A009511A6 /* zeerostock.app */;
@@ -107,6 +125,10 @@
 			);
 			mainGroup = A9863D3A2FB87B3A009511A6;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A9863D5B2FB87CD5009511A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				A9924BAA2FB8F866003D3CFF /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A9863D442FB87B3A009511A6 /* Products */;
 			projectDirPath = "";
@@ -262,6 +284,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -319,6 +342,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -345,6 +369,53 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A9863D5B2FB87CD5009511A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.13.0;
+			};
+		};
+		A9924BAA2FB8F866003D3CFF /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.21.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A9863D5C2FB87CD5009511A6 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9863D5B2FB87CD5009511A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		A9863D5E2FB87CD5009511A6 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9863D5B2FB87CD5009511A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		A9863D602FB87CD5009511A6 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9863D5B2FB87CD5009511A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		A9924BAB2FB8F866003D3CFF /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9924BAA2FB8F866003D3CFF /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		A9924BAD2FB8F866003D3CFF /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9924BAA2FB8F866003D3CFF /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A9863D3B2FB87B3A009511A6 /* Project object */;
 }

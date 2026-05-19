@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  zeerostock
+
+  Created by Sameer Jain on 17/05/26.
+  
+*/
+
+"Login" = "Welcome to ZeeroStock assignment.\nPlease Enter your Email and Password to Login";
+"Signup" = "Welcome to ZeeroStock assignment. Please Enter your Name, Email and Password to Signup";
+
+"Wrong password" = "You Entered Wrong password, please try again";
+"Invalid email" = "Please enter correct Email";
+"User not found" = "User not found";
+"Invalid credentials" = "Invalid credentials";
+"Enter Correct email/password" = "Please enter correct Email and Password";
+
+"Product Uploaded Successfully" = "Product Uploaded Successfully. Please wait for Approval from Admin";
