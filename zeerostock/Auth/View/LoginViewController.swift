@@ -138,6 +138,9 @@ final class LoginViewController: UIViewController {
         containerView.addSubview(loginButton)
         containerView.addSubview(signupButton)
         
+        emailTextField.autocapitalizationType = .none
+        emailTextField.keyboardType = .emailAddress
+        
         NSLayoutConstraint.activate([
 
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),

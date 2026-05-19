@@ -10,7 +10,7 @@ import UIKit
 final class SupplierProductsViewController: UIViewController {
 
     private let viewModel = SupplierProductsViewModel()
-
+    private let refreshControl = UIRefreshControl()
     private var hasLoadedProducts = false
 
     private lazy var tableView: UITableView = {
@@ -30,7 +30,8 @@ final class SupplierProductsViewController: UIViewController {
         tableView.estimatedRowHeight = 120
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
-
+        refreshControl.addTarget(self, action: #selector(refreshPulled), for: .valueChanged)
+        tableView.refreshControl = refreshControl
         return tableView
     }()
 
@@ -120,6 +121,7 @@ final class SupplierProductsViewController: UIViewController {
                 self.emptyLabel.isHidden = !isEmpty
 
                 self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
         }
 
@@ -145,6 +147,15 @@ final class SupplierProductsViewController: UIViewController {
         hasLoadedProducts = true
 
         viewModel.fetchProducts()
+    }
+    
+    @objc private func refreshPulled() {
+
+        viewModel.fetchProducts()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.refreshControl.endRefreshing()
+        }
     }
 }
 
