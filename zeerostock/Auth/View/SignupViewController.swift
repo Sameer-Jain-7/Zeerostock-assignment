@@ -187,6 +187,9 @@ final class SignupViewController: UIViewController {
         containerView.addSubview(roleSegmentedControl)
         containerView.addSubview(signupButton)
 
+        emailTextField.autocapitalizationType = .none
+        emailTextField.keyboardType = .emailAddress
+        
         signupButton.addTarget(
             self,
             action: #selector(signupTapped),

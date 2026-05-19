@@ -10,7 +10,7 @@ import Foundation
 final class SupplierProductsViewModel {
 
     private(set) var products: [ProductModel] = []
-    private var lastProductIds: [String] = []
+    private var lastProducts: [ProductModel] = []
 
     var onLoading: ((Bool) -> Void)?
     var onDataUpdated: (() -> Void)?
@@ -24,7 +24,7 @@ final class SupplierProductsViewModel {
             switch result {
             case .success(let products):
                 self?.products = products
-                self?.lastProductIds = products.map { $0.id }
+                self?.lastProducts = products
                 self?.onDataUpdated?()
             case .failure(let error):
                 self?.onError?(
@@ -35,17 +35,41 @@ final class SupplierProductsViewModel {
     }
 
     func refreshProductsIfNeeded() {
+
         ProductService.shared.fetchSupplierProducts {
             [weak self] result in
+
             switch result {
+
             case .success(let products):
-                let newIds = products.map { $0.id }
-                if newIds != self?.lastProductIds {
-                    self?.products = products
-                    self?.lastProductIds = newIds
-                    self?.onDataUpdated?()
+
+                guard let self = self else {
+                    return
                 }
+
+                let hasChanges =
+                products.count != self.lastProducts.count ||
+
+                zip(products, self.lastProducts).contains {
+
+                    newProduct,
+                    oldProduct in
+
+                    newProduct.id != oldProduct.id ||
+                    newProduct.approved != oldProduct.approved ||
+                    newProduct.responded != oldProduct.responded
+                }
+
+                if hasChanges {
+
+                    self.products = products
+                    self.lastProducts = products
+
+                    self.onDataUpdated?()
+                }
+
             case .failure(let error):
+
                 self?.onError?(
                     error.localizedDescription
                 )

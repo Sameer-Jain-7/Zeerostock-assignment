@@ -11,6 +11,7 @@ final class AdminApprovalViewController: UIViewController {
 
     private let viewModel = AdminApprovalViewModel()
     private var filteredProducts: [ProductModel] = []
+    private let refreshControl = UIRefreshControl()
 
     private lazy var tableView: UITableView = {
 
@@ -78,6 +79,8 @@ final class AdminApprovalViewController: UIViewController {
 
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
+        refreshControl.addTarget(self, action: #selector(refreshPulled), for: .valueChanged)
+        tableView.refreshControl = refreshControl
         filterSegmentedControl.addTarget(
             self,
             action: #selector(filterChanged),
@@ -120,12 +123,14 @@ final class AdminApprovalViewController: UIViewController {
         viewModel.onDataUpdated = { [weak self] in
             DispatchQueue.main.async {
                 self?.applyFilter()
+                self?.refreshControl.endRefreshing()
             }
         }
 
         viewModel.onError = { [weak self] message in
             DispatchQueue.main.async {
                 self?.hideLoading()
+                self?.refreshControl.endRefreshing()
                 self?.showAlert(message: message)
             }
         }
@@ -168,6 +173,11 @@ final class AdminApprovalViewController: UIViewController {
     @objc
     private func reloadProducts() {
         fetchProducts()
+    }
+    
+    @objc
+    private func refreshPulled() {
+        viewModel.fetchProducts()
     }
     
     deinit {

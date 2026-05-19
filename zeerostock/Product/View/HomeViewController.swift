@@ -10,7 +10,7 @@ import UIKit
 final class HomeViewController: UIViewController {
     
     private let viewModel = HomeViewModel()
-    
+    private let refreshControl = UIRefreshControl()
     private lazy var collectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
@@ -53,6 +53,8 @@ final class HomeViewController: UIViewController {
             .foregroundColor: UIColor.black
         ]
         collectionView.backgroundColor = .clear
+        refreshControl.addTarget(self, action: #selector(refreshPulled), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
@@ -75,15 +77,22 @@ final class HomeViewController: UIViewController {
         viewModel.onDataUpdated = { [weak self] in
             DispatchQueue.main.async {
                 self?.collectionView.reloadData()
+                self?.refreshControl.endRefreshing()
             }
         }
 
         viewModel.onError = { [weak self] message in
             DispatchQueue.main.async {
                 self?.hideLoading()
+                self?.refreshControl.endRefreshing()
                 self?.showAlert(message: message)
             }
         }
+    }
+    
+    @objc
+    private func refreshPulled() {
+        viewModel.fetchProducts()
     }
 }
 
